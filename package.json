@@ -1,0 +1,14 @@
+{
+  "name": "fb-score",
+  "version": "1.0.0",
+  "description": "football live score app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christian Decarle decarle.c@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
