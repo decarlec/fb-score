@@ -12,10 +12,10 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.get('/express_backend', (req, res) => {
     httpClient.makeRequest(url, (errors, data) =>{
         if(errors){
-            res.send({ express: "Oh no, there was an error! " + errors })
+            res.send({ data: "Oh no, there was an error! " + errors })
         }
         else{
-            res.send({ express: data });
+            res.send({ data });
         }
     });
 });

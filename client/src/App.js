@@ -9,7 +9,7 @@ class App extends Component {
   componentDidMount() {
       // Call our fetch function below once the component mounts
     this.callBackendAPI()
-      .then(res => this.setState({ matches: JSON.parse(res.express) }))
+      .then(res => this.setState({ matches: JSON.parse(res.data) }))
       .catch(err => console.log(err));
   }
     // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
@@ -27,9 +27,17 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-intro">
-          <ol>
-            { this.state.data ? this.state.data.map(match => <li>{match}</li>) : null }
-          </ol>         
+          { this.state.matches ? 
+          <div>
+            <h1>Matches:</h1>
+            <ul>
+              {this.state.matches.map(match => 
+                <li key={match.match_id}>
+                  <div>{match.match_hometeam_name} vs. {match.match_awayteam_name}</div>
+                </li>)
+              }
+            </ul>
+          </div> : null }         
         </div>
       </div>
     );
