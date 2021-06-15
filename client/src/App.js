@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-state = {
-    data: null
+  state = {
+    matches: null
   };
 
   componentDidMount() {
       // Call our fetch function below once the component mounts
     this.callBackendAPI()
-      .then(res => this.setState({ data: res.express }))
+      .then(res => this.setState({ matches: JSON.parse(res.express) }))
       .catch(err => console.log(err));
   }
     // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
@@ -26,9 +26,23 @@ state = {
   render() {
     return (
       <div className="App">
-        <p className="App-intro">{this.state.data}</p>
+        <div className="App-intro">
+          <ol>
+            { this.state.data ? this.state.data.map(match => <li>{match}</li>) : null }
+          </ol>         
+        </div>
       </div>
     );
+  }
+}
+
+class Match extends Component {
+  state = {
+    matchData: App.matches
+  };
+
+  render(){
+    return this.state.match
   }
 }
 

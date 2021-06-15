@@ -1,8 +1,8 @@
 const https = require('https')
 
-function makeRequest(url, cb){
-
+function makeRequest(url, callback){
   let data = '';
+  let errors;
 
   const req = https.request(url, res => {
     console.log(`statusCode: ${res.statusCode}`)   
@@ -12,12 +12,12 @@ function makeRequest(url, cb){
 
     res.on('end', () => {
       console.log("data recieved");
-      cb(data)
+      callback(errors, data)
     })
   })
   
   req.on('error', error => {
-    console.error(error);
+    errors.add(error);
   })
   
   req.end();
