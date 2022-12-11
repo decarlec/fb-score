@@ -9,7 +9,7 @@
   "author": "Christian Decarle decarle.c@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "npm": "^6.13.6"
   }
 }
